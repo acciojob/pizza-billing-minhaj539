@@ -4,11 +4,21 @@ public class Pizza {
 
     private int price;
     private Boolean isVeg;
+
+    private boolean cheese,topping,bag;
     private String bill;
 
     public Pizza(Boolean isVeg){
+        this.cheese=false;
+        this.topping=false;
+        this.bag=false;
         this.isVeg = isVeg;
-        // your code goes here
+        if(isVeg){
+            this.price=300;
+        }
+        else{
+            this.price=400;
+        }
     }
 
     public int getPrice(){
@@ -16,19 +26,29 @@ public class Pizza {
     }
 
     public void addExtraCheese(){
-        // your code goes here
+        if(cheese==false) {
+            price += 80;
+            cheese=true;
+        }
     }
 
     public void addExtraToppings(){
-        // your code goes here
+        if(topping==false) {
+            if (isVeg) price += 70;
+            else price += 120;
+            topping=true;
+        }
     }
 
     public void addTakeaway(){
-        // your code goes here
+        if(bag==false) {
+            price += 20;
+            bag=true;
+        }
     }
 
     public String getBill(){
-        // your code goes here
+        bill=String.valueOf(price);
         return this.bill;
     }
 }
